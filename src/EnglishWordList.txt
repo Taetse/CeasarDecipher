@@ -1747,6 +1747,7 @@ amusements
 amuses
 amusing
 amusingly
+a
 an
 ana
 anabolic
@@ -11082,6 +11083,7 @@ coughed
 coughing
 coughs
 could
+couldnt
 couloir
 coulomb
 coulombs
@@ -23513,6 +23515,8 @@ hazily
 haziness
 hazy
 he
+hes
+hed
 head
 headache
 headaches
@@ -31747,6 +31751,7 @@ midwinter
 midwives
 mien
 might
+mightnt
 mightier
 mightiest
 mightily
@@ -33146,6 +33151,7 @@ muslin
 mussel
 mussels
 must
+mustnt
 mustache
 mustang
 mustangs
@@ -45693,6 +45699,7 @@ shakily
 shaking
 shaky
 shale
+shant
 shall
 shallot
 shallots
@@ -45792,6 +45799,7 @@ shaw
 shawl
 shawls
 she
+shes
 sheaf
 shear
 sheared
@@ -46054,6 +46062,7 @@ shotgun
 shotguns
 shots
 should
+shouldnt
 shoulder
 shouldered
 shouldering
@@ -51556,6 +51565,7 @@ thanklessly
 thanks
 thanksgiving
 that
+thats
 thatch
 thatched
 thatcher
@@ -51629,6 +51639,7 @@ therapies
 therapist
 therapists
 therapy
+theres
 there
 thereabouts
 thereafter
@@ -51668,6 +51679,10 @@ thespian
 thespians
 theta
 they
+theyve
+theyre
+theyll
+theyd
 thick
 thicken
 thickened
@@ -56739,6 +56754,7 @@ wayward
 waywardly
 waywardness
 we
+weve
 weak
 weaken
 weakened
@@ -56977,6 +56993,7 @@ wends
 went
 wept
 were
+werent
 werewolf
 werewolves
 west
@@ -57022,6 +57039,10 @@ wharf
 wharfs
 wharves
 what
+whatve
+whats
+whatre
+whatll
 whatever
 whatnot
 whatsoever
@@ -57063,6 +57084,7 @@ when
 whence
 whenever
 where
+wheres
 whereabouts
 whereas
 whereby
@@ -57184,6 +57206,9 @@ whizkids
 whizz
 whizzkid
 who
+whove
+wholl
+whos
 whoa
 whodunit
 whodunnit
@@ -57743,6 +57768,7 @@ worthlessness
 worthwhile
 worthy
 would
+wouldnt
 wound
 wounded
 wounding
@@ -58006,6 +58032,10 @@ york
 yorker
 yorkers
 you
+youre
+youd
+youll
+youve
 young
 younger
 youngest
@@ -58118,3 +58148,13 @@ zooplankton
 zoos
 zulu
 zulus
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
