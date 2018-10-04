@@ -47,6 +47,7 @@ public class Main {
                 if (shiftPercentage > bestShiftPercentage) {
                     bestShiftPercentage = shiftPercentage;
                     bestShift = shiftMessage;
+                    System.out.println("Found new Match: " + bestShiftPercentage);
                 }
             }
 
@@ -71,11 +72,14 @@ public class Main {
     }
 
     private static double getEnglishDictionaryMatch(HashSet<String> dictionary, String sentence) {
-        String[] words = sentence.split("[ \n]");
+        sentence = sentence.replaceAll("[-+.^:;\\[\\]{}()`'\",\n?!<>*&%$#@=~|/\\\\_]"," ");
+        String[] words = sentence.split(" +");
         int total = words.length, matches = 0;
         for (String word : words)
             if (dictionary.contains(word.toLowerCase()))
                 ++matches;
+//            else if (matches > 0)
+//                System.out.println("Dictionary mismatch: " + word);
         return ((double)matches / total) * 100;
     }
 }
