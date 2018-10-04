@@ -70,7 +70,7 @@ public class Main {
     }
 
     private static HashSet<String> getDictionary(String path) {
-        HashSet<String> dictionary = new HashSet<>(60000, 100);
+        HashSet<String> dictionary = new HashSet<>(100000, 100);
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
             String line;
