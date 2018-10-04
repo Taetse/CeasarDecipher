@@ -1,7 +1,5 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashSet;
 
 public class Main {
@@ -14,10 +12,10 @@ public class Main {
         String fileName = "D:\\Documents\\COS 330\\assignments\\COS330Assignment5\\src\\CeasarText.txt";
 
         char[] alphabet = ("0123456789" + "abcdefghijklmnopqrstuvwxyz" + "abcdefghijklmnopqrstuvwxyz".toUpperCase()).toCharArray();
-        int[] alphabetIndex = new int[128];
-        for (int a = 0; a < alphabetIndex.length; a++) {
+        short[] alphabetIndex = new short[128];
+        for (short a = 0; a < alphabetIndex.length; a++) {
             alphabetIndex[a] = -1;
-            for (int b = 0; b < alphabet.length; b++) {
+            for (short b = 0; b < alphabet.length; b++) {
                 if (alphabet[b] == a)
                     alphabetIndex[a] = b;
             }
@@ -26,23 +24,22 @@ public class Main {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
 
-            StringBuffer stringBuffer = new StringBuffer();
-            String line = null;
-            while((line =bufferedReader.readLine())!=null)
-                stringBuffer.append(line).append("\n");
-            System.out.println(stringBuffer);
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while((line = bufferedReader.readLine()) != null)
+                stringBuilder.append(line).append("\n");
+            System.out.println("Original Message:\n" + stringBuilder);
+            char[] fileContent = stringBuilder.toString().toCharArray();
 
-            String fileContent = stringBuffer.toString().replace("\n", " ");
             HashSet<String> dictionary = getDictionary("D:\\Documents\\COS 330\\assignments\\COS330Assignment5\\src\\EnglishWordList.txt");
 
-            String bestShift = "";
-            double bestShiftPercentage = 0;
+            String bestShift = "Error!";
+            double bestShiftPercentage = Double.NEGATIVE_INFINITY;
             //start shifts
-            for (int a = 0; a < alphabet.length; a++) {
+            for (short a = 0; a < alphabet.length; a++) {
                 StringBuilder fileContentShifted = new StringBuilder();
-                for (int b = 0; b < fileContent.length(); b++) {
-                    char ogChar = fileContent.charAt(b);
-                    int ogCharIndex = alphabetIndex[ogChar];
+                for (char ogChar : fileContent) {
+                    short ogCharIndex = alphabetIndex[ogChar];
                     fileContentShifted.append((ogCharIndex == -1? ogChar : alphabet[(ogCharIndex + a) % alphabet.length]));
                 }
 
@@ -54,26 +51,19 @@ public class Main {
                 }
             }
 
-            System.out.println("Best message:");
-            System.out.println(bestShift);
-        } catch (FileNotFoundException fnfe) {
-            System.out.println("File " + fileName + " not found");
-            fnfe.printStackTrace();
-        } catch (IOException ioe) {
-            System.out.println("File read Exception: " + ioe.getMessage());
-            ioe.printStackTrace();
+            System.out.println("Best message:\n" + bestShift);
         } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public static HashSet<String> getDictionary(String path) {
+    private static HashSet<String> getDictionary(String path) {
         HashSet<String> dictionary = new HashSet<>();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
             String line;
-            while((line = bufferedReader.readLine())!=null)
+            while((line = bufferedReader.readLine())!= null)
                 dictionary.add(line.toLowerCase());
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -81,14 +71,12 @@ public class Main {
         return dictionary;
     }
 
-    public static double getEnglishDictionaryMatch(HashSet<String> dictionary, String sentence) {
-        String[] words = sentence.split(" ");
-        double total = words.length, matches = 0;
-        for (int a = 0; a < words.length; a++) {
-            if (dictionary.contains(words[a].toLowerCase()))
-                matches++;
-        }
-
-        return (matches / total) * 100;
+    private static double getEnglishDictionaryMatch(HashSet<String> dictionary, String sentence) {
+        String[] words = sentence.split("[ \n]");
+        int total = words.length, matches = 0;
+        for (String word : words)
+            if (dictionary.contains(word.toLowerCase()))
+                ++matches;
+        return ((double)matches / total) * 100;
     }
 }
